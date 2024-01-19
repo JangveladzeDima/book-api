@@ -1,9 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
-@Controller('/book')
+@Controller("/book")
 export class BookController {
-  @Get('/')
+  @Get("/")
   async get() {
-    return 'Hello';
+    return "Hello";
   }
 }

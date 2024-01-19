@@ -1,7 +1,7 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import * as dotenv from 'dotenv';
-import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
+import * as dotenv from "dotenv";
+import { ValidationPipe } from "@nestjs/common";
 
 console.log(__dirname);
 dotenv.config({ path: `${__dirname}/../.env` });

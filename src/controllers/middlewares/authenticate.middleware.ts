@@ -3,13 +3,13 @@ import {
   Injectable,
   NestMiddleware,
   UnauthorizedException,
-} from '@nestjs/common';
-import { IAuthTokenService } from '../../core/domain/interfaces/services/auth-token-service.interface';
+} from "@nestjs/common";
+import { IAuthTokenService } from "../../core/domain/interfaces/services/auth-token-service.interface";
 
 @Injectable()
 export class AuthenticateMiddleware implements NestMiddleware {
   private async extractAuthHeaderPayload(req: Request) {
-    const token = req.headers['authorization']?.replace('Bearer ', '');
+    const token = req.headers["authorization"]?.replace("Bearer ", "");
     return (
       (token && (await this.authTokenService.getUserByToken(token))) || null
     );
@@ -20,7 +20,7 @@ export class AuthenticateMiddleware implements NestMiddleware {
   }
 
   constructor(
-    @Inject('AuthTokenService')
+    @Inject("AuthTokenService")
     private readonly authTokenService: IAuthTokenService,
   ) {}
 

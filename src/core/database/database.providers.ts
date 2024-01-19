@@ -1,13 +1,13 @@
-import { Sequelize } from 'sequelize-typescript';
-import { User } from '../domain/entities/User.entity';
+import { Sequelize } from "sequelize-typescript";
+import { User } from "../domain/entities/User.entity";
 
 export const databaseProviders = [
   {
-    provide: 'SEQUELIZE',
+    provide: "SEQUELIZE",
     useFactory: async () => {
       const sequelize = new Sequelize({
-        dialect: 'postgres',
-        host: 'localhost',
+        dialect: "postgres",
+        host: "localhost",
         port: Number(process.env.POSTGRES_PORT),
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,

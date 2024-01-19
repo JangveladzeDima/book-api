@@ -1,4 +1,4 @@
-import { User } from '../../entities/User.entity';
+import { User } from "../../entities/User.entity";
 
 export interface IAuthTokenService {
   getAccessToken(user: User): Promise<string>;

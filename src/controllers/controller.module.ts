@@ -1,8 +1,8 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { AuthController } from './auth/auth.controller';
-import { ServiceModule } from '../core/services/service.module';
-import { BookController } from './book/book.controller';
-import { AuthenticateMiddleware } from './middlewares/authenticate.middleware';
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
+import { AuthController } from "./auth/auth.controller";
+import { ServiceModule } from "../core/services/service.module";
+import { BookController } from "./book/book.controller";
+import { AuthenticateMiddleware } from "./middlewares/authenticate.middleware";
 
 @Module({
   imports: [ServiceModule],

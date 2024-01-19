@@ -1,18 +1,18 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { IUserRepository } from '../domain/interfaces/repositories/user-repository.interface';
-import { User } from '../domain/entities/User.entity';
+import { Inject, Injectable } from "@nestjs/common";
+import { IUserRepository } from "../domain/interfaces/repositories/user-repository.interface";
+import { User } from "../domain/entities/User.entity";
 import {
   EmailAlreadyExistException,
   UserCredentialsNotFound,
-} from '../domain/exceptions/auth/auth.exceptions';
-import { IAuthTokenService } from '../domain/interfaces/services/auth-token-service.interface';
+} from "../domain/exceptions/auth/auth.exceptions";
+import { IAuthTokenService } from "../domain/interfaces/services/auth-token-service.interface";
 
 @Injectable()
 export class AuthService {
   constructor(
-    @Inject('UserRepository')
+    @Inject("UserRepository")
     private readonly userRepository: IUserRepository,
-    @Inject('AuthTokenService')
+    @Inject("AuthTokenService")
     private readonly authTokenService: IAuthTokenService,
   ) {}
 
@@ -35,7 +35,7 @@ export class AuthService {
 
     const token = await this.authTokenService.getAccessToken(user);
     return {
-      'access-token': token,
+      "access-token": token,
     };
   }
 }

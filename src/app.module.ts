@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from './core/database/database.module';
-import { ControllerModule } from './controllers/controller.module';
-import { JwtModule } from '@nestjs/jwt';
+import { Module } from "@nestjs/common";
+import { DatabaseModule } from "./core/database/database.module";
+import { ControllerModule } from "./controllers/controller.module";
+import { JwtModule } from "@nestjs/jwt";
 
 console.log(process.env.JWT_SECRET);
 
@@ -9,8 +9,8 @@ console.log(process.env.JWT_SECRET);
   imports: [
     JwtModule.register({
       global: true,
-      secret: 'process.env.JWT_SECRET',
-      signOptions: { expiresIn: '6000s' },
+      secret: "process.env.JWT_SECRET",
+      signOptions: { expiresIn: "6000s" },
     }),
     DatabaseModule,
     ControllerModule,
