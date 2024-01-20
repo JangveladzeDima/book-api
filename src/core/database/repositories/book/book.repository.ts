@@ -4,6 +4,7 @@ import { Book } from "../../../domain/entities/book/book.entity";
 import { BaseRepository } from "../base.repository";
 import { User } from "../../../domain/entities/user.entity";
 import { BookPage } from "../../../domain/entities/book/book-page.entity";
+import { getSearchOptions, Search } from "../../../../utils";
 
 @Injectable()
 export class BookRepository
@@ -42,5 +43,28 @@ export class BookRepository
     lastReadPageId: number,
   ): Promise<void> {
     await this.book.update({ lastReadPageId }, { where: { id: bookId } });
+  }
+
+  async load(search: Search): Promise<Book[]> {
+    const options = getSearchOptions(search);
+
+    return this.book.findAll({
+      offset: options.skip,
+      limit: options.take,
+      include: [
+        {
+          model: User,
+          as: "user",
+        },
+        {
+          model: BookPage,
+          as: "pages",
+        },
+        {
+          model: BookPage,
+          as: "lastReadPage",
+        },
+      ],
+    });
   }
 }

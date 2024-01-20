@@ -12,6 +12,13 @@ import {
 
 @Injectable()
 export class BookService {
+  private getSearchArgs(pageIndex = 0, pageSize = 100) {
+    return {
+      pageIndex: pageIndex || 0,
+      pageSize: pageSize || 100,
+    };
+  }
+
   constructor(
     @Inject("BookRepository")
     private readonly bookRepository: IBookRepository,
@@ -70,6 +77,11 @@ export class BookService {
     }
 
     return book;
+  }
+
+  async load(pageIndex?: number, pageSize?: number) {
+    const searchArgs = this.getSearchArgs(pageIndex, pageSize);
+    return this.bookRepository.load(searchArgs);
   }
 
   async delete(id: number) {

@@ -31,6 +31,14 @@ export class BookController {
     return this.bookService.fetch(id);
   }
 
+  @Get()
+  async load(
+    @Query("pageIndex") pageIndex?: string,
+    @Query("pageSize") pageSize?: string,
+  ) {
+    return this.bookService.load(parseInt(pageIndex), parseInt(pageSize));
+  }
+
   @Put("/:bookId/last-read-page")
   async updateLastReadPage(
     @Param("bookId") bookId: number,

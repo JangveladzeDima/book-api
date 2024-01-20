@@ -1,5 +1,6 @@
 import { Book } from "../../../entities/book/book.entity";
 import { IBaseRepository } from "../base-repository.interface";
+import { Search } from "../../../../../utils";
 
 export interface IBookRepository extends IBaseRepository<Book> {
   fetchWithReferences(id: number): Promise<Book>;
@@ -8,4 +9,6 @@ export interface IBookRepository extends IBaseRepository<Book> {
     bookId: number,
     lastReadPageId: number,
   ): Promise<void>;
+
+  load(search: Search): Promise<Book[]>;
 }
