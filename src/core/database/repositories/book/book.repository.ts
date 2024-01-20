@@ -29,7 +29,18 @@ export class BookRepository
           model: BookPage,
           as: "pages",
         },
+        {
+          model: BookPage,
+          as: "lastReadPage",
+        },
       ],
     });
+  }
+
+  async updateBookLastReadPageId(
+    bookId: number,
+    lastReadPageId: number,
+  ): Promise<void> {
+    await this.book.update({ lastReadPageId }, { where: { id: bookId } });
   }
 }

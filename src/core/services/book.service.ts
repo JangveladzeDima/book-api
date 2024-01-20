@@ -5,7 +5,10 @@ import { User } from "../domain/entities/user.entity";
 import { IBookRepository } from "../domain/interfaces/repositories/book/book-repository.interface";
 import { IBookPageRepository } from "../domain/interfaces/repositories/book/book-page-repository.interface";
 import { IUserRepository } from "../domain/interfaces/repositories/user-repository.interface";
-import { BookNotFound } from "../domain/exceptions/book.exceptions";
+import {
+  BookNotFound,
+  BookPageNotFound,
+} from "../domain/exceptions/book.exceptions";
 
 @Injectable()
 export class BookService {
@@ -41,6 +44,22 @@ export class BookService {
     );
 
     return this.bookRepository.fetchWithReferences(bookEntity.id);
+  }
+
+  async updatePageLastReadBook(bookId: number, bookPageId: number) {
+    const book = await this.bookRepository.fetch(bookId);
+    const bookPage = await this.bookPageRepository.fetch(bookPageId);
+
+    if (!book) {
+      throw new BookNotFound(bookId);
+    }
+
+    if (!bookPage) {
+      throw new BookPageNotFound(bookPageId);
+    }
+
+    await this.bookRepository.updateBookLastReadPageId(bookId, bookPageId);
+    return this.bookRepository.fetchWithReferences(bookId);
   }
 
   async fetch(id: number) {

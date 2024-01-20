@@ -5,3 +5,9 @@ export class BookNotFound extends NotFoundException {
     super(`Book with ${id} not found`);
   }
 }
+
+export class BookPageNotFound extends NotFoundException {
+  constructor(id: number) {
+    super(`Book page with ${id} not found`);
+  }
+}
