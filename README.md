@@ -1,73 +1,63 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Book Management API using Nest.js and PostgreSQL
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Project Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project involves creating a RESTful API using Nest.js to manage a collection of books. The API will handle various operations such as creating new books, retrieving book lists, updating book details, marking the last read page, and deleting books. Additionally, the API includes user registration and login functionality for authorization. The data, including user information, will be stored in a PostgreSQL database. The entire application will be containerized using Docker, and Docker Compose will be used to orchestrate the Nest.js application and the PostgreSQL database.
 
-## Description
+## Project Structure
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Technologies Used
+- Nest.js
+- PostgreSQL
+- Docker
+- Docker Compose
 
-## Installation
+### Project Components
+1. **Nest.js Server**: Set up the Nest.js server to handle HTTP requests.
+2. **PostgreSQL Database Integration**: Utilize PostgreSQL to store and manage book and user data.
+3. **Docker Containerization**: Use Docker to containerize the Nest.js application.
+4. **Docker Compose**: Orchestrate the Nest.js application and PostgreSQL database using Docker Compose.
+5. **Swagger Integration**: Access API documentation through Swagger UI at the `/api` endpoint.
 
-```bash
-$ npm install
-```
+## Project Setup
 
-## Running the app
+1. **Dependencies**: Install the necessary dependencies using `npm install`.
+2. **Environment Variables**: Configure any required environment variables, such as database credentials, in the `.env` file.
+3. **Docker Build**: Use the provided Dockerfile to build the Docker image for the Nest.js application.
+    ```bash
+    docker build -t book-api .
+    ```
+4. **Docker Compose**: Run the entire application stack using Docker Compose.
+    ```bash
+    docker-compose up
+    ```
 
-```bash
-# development
-$ npm run start
+## API Endpoints
 
-# watch mode
-$ npm run start:dev
+- `POST /auth/sign-up`: Register a new user.
+- `POST /auth/login`: Login to the application and receive an authentication token.
+- `POST /book`: Create a new book.
+- `GET /book`: Get a list of all books with optional pagination.
+- `GET /book/:id`: Get a specific book by its ID.
+- `PUT /book/:id`: Update book details.
+- `PATCH /book/:id/last-read-page`: Update the last read page of a book.
+- `DELETE /book/:id`: Delete a book.
 
-# production mode
-$ npm run start:prod
-```
+## Documentation
 
-## Test
+Access the API documentation through Swagger UI at [http://localhost:3000/api](http://localhost:3000/api). This page provides detailed information about the available endpoints, request/response formats, and other relevant details.
 
-```bash
-# unit tests
-$ npm run test
+## Testing
 
-# e2e tests
-$ npm run test:e2e
+Run end-to-end tests using the provided test suite to ensure the API functions correctly.
+`npm run test:e2e`
 
-# test coverage
-$ npm run test:cov
-```
+## Git Repository
 
-## Support
+Share the project via a Git repository, including all source code, configuration files, and documentation.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Project Launch Documentation
 
-## Stay in touch
+Attach a brief document outlining the steps to launch the project, including any specific considerations or dependencies.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Feel free to customize this README to fit your project specifics. Good luck with your Book Management API project using Nest.js, PostgreSQL, Swagger, and user authentication!

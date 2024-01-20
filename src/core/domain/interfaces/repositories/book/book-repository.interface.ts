@@ -10,5 +10,7 @@ export interface IBookRepository extends IBaseRepository<Book> {
     lastReadPageId: number,
   ): Promise<void>;
 
+  update(id: number, updateData: Partial<Book>): Promise<void>;
+
   load(search: Search): Promise<Book[]>;
 }

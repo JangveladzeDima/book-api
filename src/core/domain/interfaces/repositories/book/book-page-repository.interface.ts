@@ -1,4 +1,6 @@
 import { BookPage } from "../../../entities/book/book-page.entity";
 import { IBaseRepository } from "../base-repository.interface";
 
-export type IBookPageRepository = IBaseRepository<BookPage>;
+export interface IBookPageRepository extends IBaseRepository<BookPage> {
+  deleteByBookId(bookId: number): Promise<void>;
+}

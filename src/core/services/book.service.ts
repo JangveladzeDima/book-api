@@ -69,6 +69,34 @@ export class BookService {
     return this.bookRepository.fetchWithReferences(bookId);
   }
 
+  async updateBook(
+    id: number,
+    bookUpdateData?: Partial<Book>,
+    pages?: string[],
+  ) {
+    const book = await this.bookRepository.fetch(id);
+    if (!book) {
+      throw new BookNotFound(id);
+    }
+
+    if (pages) {
+      await this.bookPageRepository.deleteByBookId(id);
+      await Promise.all(
+        pages.map((content, index) => {
+          return this.bookPageRepository.save({
+            content,
+            pageNumber: index + 1,
+            bookId: id,
+          });
+        }),
+      );
+    }
+
+    await this.bookRepository.update(id, bookUpdateData || {});
+
+    return this.bookRepository.fetchWithReferences(id);
+  }
+
   async fetch(id: number) {
     const book = await this.bookRepository.fetchWithReferences(id);
 

@@ -21,7 +21,7 @@ export class Book extends Model {
   @Column
   lastReadPageId: number;
 
-  @BelongsTo(() => BookPage)
+  @BelongsTo(() => BookPage, { onDelete: "SET NULL" })
   lastReadPage: BookPage;
 
   @ForeignKey(() => User)

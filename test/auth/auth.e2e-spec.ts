@@ -3,7 +3,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { AppModule } from "../../src/app.module";
 import * as request from "supertest";
 import { Sequelize } from "sequelize-typescript";
-import { User } from "../../src/core/domain/entities/User.entity";
+import { User } from "../../src/core/domain/entities/user.entity";
 
 const userCredentials = {
   email: "test@gmail.com",

@@ -14,4 +14,8 @@ export class BookPageRepository
   ) {
     super(bookPage, BookPage);
   }
+
+  async deleteByBookId(bookId: number): Promise<void> {
+    await this.bookPage.destroy({ where: { bookId } });
+  }
 }

@@ -45,6 +45,10 @@ export class BookRepository
     await this.book.update({ lastReadPageId }, { where: { id: bookId } });
   }
 
+  async update(id: number, updateData: Partial<Book>): Promise<void> {
+    await this.book.update(updateData, { where: { id } });
+  }
+
   async load(search: Search): Promise<Book[]> {
     const options = getSearchOptions(search);
 
