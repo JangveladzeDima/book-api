@@ -11,13 +11,13 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Book Api')
-    .setDescription('Book API SWAGGER')
-    .setVersion('1.0')
+    .setTitle("Book Api")
+    .setDescription("Book API SWAGGER")
+    .setVersion("1.0")
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup("api", app, document);
 
   await app.listen(3000);
 }

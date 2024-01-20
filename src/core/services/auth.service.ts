@@ -1,10 +1,10 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { IUserRepository } from "../domain/interfaces/repositories/user-repository.interface";
-import { User } from "../domain/entities/User.entity";
+import { User } from "../domain/entities/user.entity";
 import {
   EmailAlreadyExistException,
   UserCredentialsNotFound,
-} from "../domain/exceptions/auth/auth.exceptions";
+} from "../domain/exceptions/auth.exceptions";
 import { IAuthTokenService } from "../domain/interfaces/services/auth-token-service.interface";
 
 @Injectable()

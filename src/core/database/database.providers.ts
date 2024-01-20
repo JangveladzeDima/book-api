@@ -1,5 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
-import { User } from "../domain/entities/User.entity";
+import { User } from "../domain/entities/user.entity";
+import { Book } from "../domain/entities/book/book.entity";
+import { BookPage } from "../domain/entities/book/book-page.entity";
 
 export const databaseProviders = [
   {
@@ -14,7 +16,7 @@ export const databaseProviders = [
         database: process.env.POSTGRES_DB,
         logging: false,
       });
-      sequelize.addModels([User]);
+      sequelize.addModels([User, Book, BookPage]);
       await sequelize.sync();
       return sequelize;
     },

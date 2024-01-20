@@ -1,20 +1,18 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { IUserRepository } from "../../domain/interfaces/repositories/user-repository.interface";
-import { User } from "../../domain/entities/User.entity";
+import { User } from "../../domain/entities/user.entity";
+import { BaseRepository } from "./base.repository";
 
 @Injectable()
-export class UserRepository implements IUserRepository {
+export class UserRepository
+  extends BaseRepository<User>
+  implements IUserRepository
+{
   constructor(
     @Inject("User")
     private readonly user: typeof User,
-  ) {}
-
-  async save(data: Partial<User>): Promise<void> {
-    await this.user.build(data).save();
-  }
-
-  async fetch(id: number): Promise<User> {
-    return this.user.findOne({ where: { id } });
+  ) {
+    super(user, User);
   }
 
   async fetchByEmail(email: string): Promise<User> {
